@@ -1,0 +1,19 @@
+local ChangeFrame = script.Parent:WaitForChild("ChangeTeam")
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local RedTeam = ChangeFrame.Red
+
+local BlueTeam = ChangeFrame.Blue
+
+ChangeFrame.Visible=true
+
+RedTeam.MouseButton1Up:Connect(function()
+	ReplicatedStorage.ChangeTeam:FireServer("Red")
+	ChangeFrame.Visible=false
+end)
+
+BlueTeam.MouseButton1Up:Connect(function()
+	ReplicatedStorage.ChangeTeam:FireServer("Blue")
+	ChangeFrame.Visible=false
+end)

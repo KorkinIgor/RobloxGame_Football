@@ -1,0 +1,8 @@
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local SpRed = workspace.FootballField.RedTeamSpawn
+
+ReplicatedStorage.ChangeTeam.OnServerEvent:Connect(function(player,team) -- функция которая срабатывает при выборе команды
+	player.Team = game.Teams[team]
+	player.Character.HumanoidRootPart.CFrame = CFrame.new(SpRed.Position)
+end)
