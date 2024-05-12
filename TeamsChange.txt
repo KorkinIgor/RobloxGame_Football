@@ -1,19 +1,27 @@
-local ChangeFrame = script.Parent:WaitForChild("ChangeTeam")
+local ChangeFrameTeam = script.Parent:WaitForChild("ChangeTeamFrame")
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local RedTeam = ChangeFrame.Red
+-------------------------------------------------------------------------
 
-local BlueTeam = ChangeFrame.Blue
+local _ChangeTeamFr = script.Parent.ChangeTeamFrame
 
-ChangeFrame.Visible=true
+local _RedTeamButton = ChangeFrameTeam.RedTeamButton -- Красная кнопка
 
-RedTeam.MouseButton1Up:Connect(function()
-	ReplicatedStorage.ChangeTeam:FireServer("Red")
-	ChangeFrame.Visible=false
+local _BlueTeamButton = ChangeFrameTeam.BlueTeamButton -- Синия кнопка
+
+-------------------------------------------------------------------------
+
+ChangeFrameTeam.Visible=true
+
+_RedTeamButton.MouseButton1Up:Connect(function()
+	ReplicatedStorage.ChangeTeamEvent:FireServer("Red")
+	ReplicatedStorage.RedTeamChoice:FireServer("Red")
+	_ChangeTeamFr.Visible=false
 end)
 
-BlueTeam.MouseButton1Up:Connect(function()
-	ReplicatedStorage.ChangeTeam:FireServer("Blue")
-	ChangeFrame.Visible=false
+_BlueTeamButton.MouseButton1Up:Connect(function()
+	ReplicatedStorage.ChangeTeamEvent:FireServer("Blue")
+	ReplicatedStorage.BlueTeamChoice:FireServer("Red")
+	_ChangeTeamFr.Visible=false
 end)
