@@ -1,0 +1,10 @@
+local BallSpawn = workspace.FootballField.Spawns.BallSpawn -- ссылка на спавн мяча
+
+
+function wasGoal( otherPart )
+	if otherPart.Name =="Ball" then
+		otherPart.Position =BallSpawn.Position + Vector3.new(0,10,0)
+	end
+end
+
+script.Parent.Touched:Connect( wasGoal )
